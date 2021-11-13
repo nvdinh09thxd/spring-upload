@@ -10,6 +10,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+		registry.addResourceHandler("/styles/**").addResourceLocations("/WEB-INF/views/");
 	}
 
 }
