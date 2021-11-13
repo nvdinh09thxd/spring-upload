@@ -1,4 +1,4 @@
-package edu.vinaenter;
+package edu.vinaenter.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
