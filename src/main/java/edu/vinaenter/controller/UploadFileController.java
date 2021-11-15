@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ public class UploadFileController {
 
 	@Autowired
 	private ServletContext servletContext;
-	
+
 	@GetMapping("upload")
 	public String upload() {
 		return "upload";
@@ -37,6 +38,9 @@ public class UploadFileController {
 			}
 			for (MultipartFile multipartFile : list) {
 				String fileName = multipartFile.getOriginalFilename();
+//				Rename file
+				fileName = FilenameUtils.getBaseName(fileName) + "_" + System.nanoTime() + "."
+						+ FilenameUtils.getExtension(fileName);
 				String filePath = dirUpload + File.separator + fileName;
 				try {
 					multipartFile.transferTo(new File(filePath));
